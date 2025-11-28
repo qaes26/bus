@@ -10,7 +10,6 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         if (studentId && password) {
-            // Simulate login
             navigate('/search');
         }
     };
@@ -24,9 +23,7 @@ const Login = () => {
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">تسجيل الدخول</h2>
                 <form onSubmit={handleLogin} className="space-y-6">
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2 text-right" htmlFor="studentId">
-                            الرقم الجامعي
-                        </label>
+                        <label className="block text-gray-700 text-sm font-bold mb-2 text-right" htmlFor="studentId">الرقم الجامعي</label>
                         <input
                             id="studentId"
                             type="text"
@@ -38,9 +35,7 @@ const Login = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-gray-700 text-sm font-bold mb-2 text-right" htmlFor="password">
-                            كلمة المرور
-                        </label>
+                        <label className="block text-gray-700 text-sm font-bold mb-2 text-right" htmlFor="password">كلمة المرور</label>
                         <input
                             id="password"
                             type="password"
@@ -51,13 +46,13 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md"
-                    >
+                    <button type="submit" className="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md">
                         تسجيل الدخول
                     </button>
                 </form>
+                <footer className="mt-8 text-gray-500 text-sm font-semibold text-center">
+                    إعداد الطالب : قيس طلال الجازي
+                </footer>
             </div>
         </div>
     );

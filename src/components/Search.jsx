@@ -14,8 +14,8 @@ const Search = () => {
     ];
 
     const handleSearch = () => {
-        const foundBus = busData.find(b => b.area === area);
-        setResult(foundBus || { error: "لا توجد حافلات متاحة لهذه المنطقة حالياً" });
+        const found = busData.find(b => b.area === area);
+        setResult(found || { error: "لا توجد حافلات متاحة لهذه المنطقة حالياً" });
     };
 
     return (
@@ -24,35 +24,29 @@ const Search = () => {
                 <h1 className="text-2xl font-bold text-gray-800">نظام حافلات الجامعة</h1>
                 <img src={logo} alt="Logo" className="h-12 w-auto" />
             </header>
-
             <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
                 <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">البحث عن الحافلة</h2>
-
                 <div className="mb-6">
-                    <label className="block text-gray-700 text-sm font-bold mb-2 text-right">
-                        اختر منطقة السكن
-                    </label>
+                    <label className="block text-gray-700 text-sm font-bold mb-2 text-right" htmlFor="area">اختر منطقة السكن</label>
                     <select
+                        id="area"
                         value={area}
-                        onChange={(e) => setArea(e.target.value)}
+                        onChange={e => setArea(e.target.value)}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-right bg-white"
                     >
                         <option value="">-- اختر المنطقة --</option>
-                        {busData.map((b, index) => (
-                            <option key={index} value={b.area}>{b.area}</option>
+                        {busData.map((b, i) => (
+                            <option key={i} value={b.area}>{b.area}</option>
                         ))}
                     </select>
                 </div>
-
                 <button
                     onClick={handleSearch}
                     disabled={!area}
-                    className={`w-full font-bold py-3 px-4 rounded-lg transition duration-300 shadow-md ${area ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                        }`}
+                    className={`w-full font-bold py-3 px-4 rounded-lg transition duration-300 shadow-md ${area ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
                 >
                     البحث عن الباص
                 </button>
-
                 {result && (
                     <div className={`mt-8 p-6 rounded-xl text-center animate-fade-in ${result.error ? 'bg-red-100 text-red-800' : 'bg-blue-50 border-2 border-blue-200'}`}>
                         {result.error ? (
@@ -65,6 +59,9 @@ const Search = () => {
                         )}
                     </div>
                 )}
+                <footer className="mt-12 text-gray-500 text-sm font-semibold text-center">
+                    إعداد الطالب : قيس طلال الجازي
+                </footer>
             </div>
         </div>
     );
